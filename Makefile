@@ -1,16 +1,6 @@
-EXECUTABLES_DIRECTORY := ./executables
-HYPERFINE_OUTPUT := ./hyperfine-output.json
-HYPERFINE_PROCESSED_OUTPUT := ./hyperfine-processed-output.json
-BENCHMARK_TASK := ./benchmark
-BRANCH := master
+check:
+	flake8 chronologer
+	mypy --ignore-missing-imports chronologer
 
-build:
-	./build-commits.sh $(BRANCH) $(EXECUTABLES_DIRECTORY)
-
-
-benchmark:
-	./benchmark-commits.py $(BENCHMARK_TASK) $(EXECUTABLES_DIRECTORY) $(HYPERFINE_OUTPUT)
-
-
-process:
-	./transform-benchmark-data.py < $(HYPERFINE_OUTPUT) > $(HYPERFINE_PROCESSED_OUTPUT)
+test: check
+	chronologer tests/chronologer.yaml

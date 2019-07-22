@@ -1,0 +1,8 @@
+benchmarks_dir: ./tests/benchmarks
+benchmark_runs: 5
+build_command: "true"
+built_executable: ./tests/executable
+combined_benchmark_file: ./tests/all-benchmarks.json
+executables_dir: ./tests/executables
+html_output_file: ./tests/index.html
+revision_range: master

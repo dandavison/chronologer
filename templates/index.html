@@ -15,7 +15,8 @@
   <body>
     <div id="vis"></div>
     <script>
-      vegaEmbed("#vis", "boxplot.vl.json");
+      var boxplotSpec = {{ boxplot_spec }};
+      vegaEmbed("#vis", boxplotSpec);
     </script>
   </body>
 </html>
