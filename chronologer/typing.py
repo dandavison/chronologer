@@ -1,0 +1,2 @@
+CommitHash = str
+Path = str
