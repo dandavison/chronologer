@@ -16,6 +16,7 @@ def get_executable(commit: CommitHash) -> Optional[Path]:
         try:
             _build(commit)
         except subprocess.CalledProcessError as exc:
+            print(f"Failed build on commit {commit}", file=sys.stderr)
             print(exc, file=sys.stderr)
             return None
     return path
