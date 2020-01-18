@@ -22,7 +22,6 @@ def combine_benchmark_files():
 
 def transform_data(input):
     repo = Repository(get_git_dir())
-    commits = {commit.id.hex: commit for commit in repo.walk(repo.branches.get("master").target)}
 
     output = []
     for row in input["results"]:
@@ -30,7 +29,7 @@ def transform_data(input):
             continue
         dir, commit_hash = re.match("^([^ ]+/)?([0-9a-f]+)", row["command"]).groups()
         try:
-            commit = commits[commit_hash]
+            commit = repo.get(commit_hash)
         except KeyError:
             print(f"Skipping commit {commit_hash}", file=sys.stderr)
             continue
