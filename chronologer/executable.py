@@ -1,6 +1,7 @@
 import os
 import sys
 from typing import Optional
+from pathlib import Path as origPath
 
 from chronologer import git
 from chronologer import subprocess
@@ -28,4 +29,5 @@ def _build(commit: CommitHash) -> None:
     git.assert_clean()
     with git.checkout(commit):
         subprocess.check_call(config.build_command.format(commit=commit).split())
+        origPath(config.executables_dir).mkdir(parents=True, exist_ok=True)
         subprocess.check_call(["cp", config.built_executable, _get_executable_path(commit)])
