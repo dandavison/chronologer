@@ -11,7 +11,7 @@ from chronologer.typing import CommitHash
 class Config:
     benchmarks_dir: str = ""
     benchmark_runs: int = -1
-    benchmark_task: str = ""
+    benchmark_task: str = "{executable}"
     warmup: int = 0
     build_command: str = ""
     built_executable: str = ""
