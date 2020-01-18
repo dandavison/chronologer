@@ -16,6 +16,8 @@ def benchmark(commit: CommitHash):
             config.benchmark_task.format(executable=executable),
             "--runs",
             f"{config.benchmark_runs}",
+            "--warmup",
+            f"{config.warmup}",
             "--export-json",
             _get_benchmark_file(commit),
             "--ignore-failure",

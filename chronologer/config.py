@@ -12,6 +12,7 @@ class Config:
     benchmarks_dir: str = ""
     benchmark_runs: int = -1
     benchmark_task: str = ""
+    warmup: int = 0
     build_command: str = ""
     built_executable: str = ""
     combined_benchmark_file: str = ""
