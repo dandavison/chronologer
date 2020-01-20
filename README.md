@@ -17,3 +17,6 @@ First example: `chronologer tests/chronologer.yaml` and then open the produced
 starting point. Some hints: avoid outputs inside the repository you are trying
 to profile; your to be profiled executable must be statically linked, as they
 get copied into a separate output directory.
+
+## Hints
+* chronologer requires a clean git repository at every commit. One way to do so, without modifying the `.gitignore` file, is to add the ignore list in `.git/info/exclude`.
