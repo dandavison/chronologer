@@ -25,12 +25,12 @@ def assert_clean():
     try:
         subprocess.check_call(["git", "diff", "--quiet"])
         subprocess.check_call(["git", "diff", "--cached", "--quiet"])
-        assert not subprocess.check_output(
-            ["git", "ls-files", "--other", "--exclude-standard", "--directory"]
-        )
-    except (subprocess.CalledProcessError, AssertionError):
+        command = ["git", "ls-files", "--other", "--exclude-standard", "--directory"]
+        assert not subprocess.check_output(command), " ".join(command)
+    except (subprocess.CalledProcessError, AssertionError) as e:
         print(
             "Git working directory is not clean: "
             "please commit/stash changes and uncommitted files."
         )
+        print(f"Failed with: {e}")
         sys.exit(1)

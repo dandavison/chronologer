@@ -7,7 +7,7 @@ from chronologer.config import config
 
 
 def write_html():
-    html_file = os.path.join(os.path.dirname(__file__), "..", "templates", "index.html")
+    html_file = os.path.join(os.path.dirname(__file__), "templates", "index.html")
     with open(html_file) as fp:
         html_template = Template(fp.read())
     if not config.dry_run:
